@@ -10,7 +10,8 @@ import { HomePage } from '../pages/home/home';
 import {AngularFireModule,FirebaseAppConfig} from 'angularfire2'
 import { SignupPage } from '../pages/signup/signup';
 import { HttpModule } from '@angular/http';
-import { AuthProvider } from '../providers/auth/auth';
+import { AuthProvider } from '../providers/auth/auth.provider';
+
 
 
 // const FIREBASEAPPCONFIG:FirebaseAppConfig = {
@@ -47,7 +48,7 @@ const FIREBASEAPPCONFIG = {
     UserProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     UserProvider,
-    AuthProvider
+
   ]
 })
 export class AppModule {}
