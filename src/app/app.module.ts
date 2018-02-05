@@ -9,6 +9,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import {AngularFireModule,FirebaseAppConfig} from 'angularfire2'
 import { SignupPage } from '../pages/signup/signup';
+import { HttpModule } from '@angular/http';
 
 
 // const FIREBASEAPPCONFIG:FirebaseAppConfig = {
@@ -28,6 +29,7 @@ const FIREBASEAPPCONFIG = {
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(FIREBASEAPPCONFIG)
   ],
