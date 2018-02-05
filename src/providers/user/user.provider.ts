@@ -15,8 +15,8 @@ export class UserProvider {
   }
 
   createUser(user:User):firebase.Promise<void>{
-    return this.users
-    .push(user);
+    return this.af.database.object(`/users/${user.uid}`)
+    .set(user);
   }
 
 }
