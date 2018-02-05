@@ -7,8 +7,10 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import {AngularFireModule,FirebaseAppConfig} from 'angularfire2'
+import { SignupPage } from '../pages/signup/signup';
 
-const FIREBASEAPPCONFIG:FirebaseAppConfig = {
+// const FIREBASEAPPCONFIG:FirebaseAppConfig = {
+const FIREBASEAPPCONFIG = {
   apiKey: "AIzaSyDkR-rQRhNS7_xWogZcefsKWhaRTBTs5dY",
   authDomain: "ionic2-firebase-chat-cb60a.firebaseapp.com",
   databaseURL: "https://ionic2-firebase-chat-cb60a.firebaseio.com",
@@ -19,7 +21,8 @@ const FIREBASEAPPCONFIG:FirebaseAppConfig = {
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    SignupPage
   ],
   imports: [
     BrowserModule,
@@ -29,7 +32,8 @@ const FIREBASEAPPCONFIG:FirebaseAppConfig = {
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    SignupPage
   ],
   providers: [
     StatusBar,
