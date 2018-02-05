@@ -1,21 +1,21 @@
 import {Http} from '@angular/http'
 import { Injectable } from '@angular/core';
-import { AngularFire } from 'angularfire2';
-import { User } from 'firebase';
+import { AngularFire, FirebaseListObservable } from 'angularfire2';
+import { User } from '../../models/user.model';
 
 
 @Injectable()
 export class UserProvider {
-
+  users:FirebaseListObservable<User[]>
   constructor(
         public af:AngularFire,
         public http: Http,
         ) {
-    console.log('Hello UserProvider Provider');
+    this.users = this.af.database.list(`/users`)
   }
 
   createUser(user:User):firebase.Promise<void>{
-    return this.af.database.list(`/users`)
+    return this.users
     .push(user);
   }
 
