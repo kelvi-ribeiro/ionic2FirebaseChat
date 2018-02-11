@@ -1,3 +1,4 @@
+
 import { UserProvider } from './../providers/user/user.provider';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
@@ -11,6 +12,7 @@ import {AngularFireModule,FirebaseAppConfig} from 'angularfire2'
 import { SignupPage } from '../pages/signup/signup';
 import { HttpModule } from '@angular/http';
 import { AuthProvider } from '../providers/auth/auth.provider';
+import { BaseProvider } from '../providers/base/base.provider';
 
 
 
