@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import {NavController, NavParams } from 'ionic-angular';
+import {AlertController,Loading, LoadingController,NavController, NavParams,  } from 'ionic-angular';
 import { FormGroup, FormBuilder,Validators } from '@angular/forms';
 import { SignupPage } from '../signup/signup';
+import { AuthProvider } from './../../providers/auth/auth.provider';
+import { HomePage } from '../home/home';
 
 /**
  * Generated class for the SigninPage page.
@@ -20,6 +22,9 @@ export class SigninPage {
   signinForm: FormGroup
 
   constructor(
+    public alertCtrl:AlertController,
+    public loadingCtrl:LoadingController,
+    public authProvider:AuthProvider,
     public formBuilder:FormBuilder,
     public navCtrl: NavController,
     public navParams: NavParams) {
@@ -35,11 +40,39 @@ export class SigninPage {
 
 
   onSubmit():void{
-    console.log(this.signinForm.value);
+    let loading:Loading = this.showLoading();
+   this.authProvider.signWithEmail(this.signinForm.value)
+   .then((isLogged:boolean)=>{
+     if(isLogged){
+       this.navCtrl.setRoot(HomePage)
+       loading.dismiss();
+     }
+
+   }).catch((error:any)=>{
+     console.log(error);
+     loading.dismiss();
+     this.showAlert(error);
+
+   })
 
   }
   onSignup():void{
     this.navCtrl.push(SignupPage)
+  }
+
+  private showLoading(): Loading {
+    let loading: Loading = this.loadingCtrl.create(({
+      content: 'Please wait...'
+    }));
+    loading.present();
+    return loading;
+  }
+
+  private showAlert(message: string): void {
+    this.alertCtrl.create({
+      message: message,
+      buttons: ['OK']
+    }).present();
   }
 
 }

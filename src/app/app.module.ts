@@ -8,7 +8,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import {AngularFireModule,FirebaseAppConfig} from 'angularfire2'
+import {AngularFireModule,FirebaseAppConfig,AuthProviders, AuthMethods} from 'angularfire2'
 import { SignupPage } from '../pages/signup/signup';
 import { HttpModule } from '@angular/http';
 import { AuthProvider } from '../providers/auth/auth.provider';
@@ -25,7 +25,11 @@ const FIREBASEAPPCONFIG = {
   storageBucket: "ionic2-firebase-chat-cb60a.appspot.com",
   messagingSenderId: "568435627712"
 };
+  const firebaseAuthConfig = {
+    provider:AuthProviders.Custom,
+    method:AuthMethods.Password
 
+  }
 @NgModule({
   declarations: [
     MyApp,
@@ -37,7 +41,7 @@ const FIREBASEAPPCONFIG = {
     BrowserModule,
     HttpModule,
     IonicModule.forRoot(MyApp),
-    AngularFireModule.initializeApp(FIREBASEAPPCONFIG)
+    AngularFireModule.initializeApp(FIREBASEAPPCONFIG,firebaseAuthConfig)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
