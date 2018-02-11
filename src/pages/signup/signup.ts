@@ -6,6 +6,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { NavController, NavParams, Loading, LoadingController, AlertController } from 'ionic-angular';
 import { User } from '../../models/user.model';
 import 'rxjs/add/operator/first'
+import { HomePage } from '../home/home';
 /**
  * Generated class for the SignupPage page.
  *
@@ -57,7 +58,7 @@ export class SignupPage {
               formUser.uid = authState.auth.uid;
               this.userProvider.createUser(formUser)
                 .then(() => {
-                  console.log('Usuário Cadastrado');
+                  this.navCtrl.setRoot(HomePage)
                   loading.dismiss()
                 }).catch((error: any) => {
                   console.log(error);
