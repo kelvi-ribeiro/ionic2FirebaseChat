@@ -32,4 +32,8 @@ export class AuthProvider extends BaseProvider {
     }).catch(this.handlePromiseError)
   }
 
+  logout():Promise<void>{
+    return this.auth.logout();
+  }
+
 }
