@@ -13,6 +13,7 @@ import { SignupPage } from '../pages/signup/signup';
 import { HttpModule } from '@angular/http';
 import { AuthProvider } from '../providers/auth/auth.provider';
 import { BaseProvider } from '../providers/base/base.provider';
+import { SigninPage } from '../pages/signin/signin';
 
 
 
@@ -29,7 +30,8 @@ const FIREBASEAPPCONFIG = {
   declarations: [
     MyApp,
     HomePage,
-    SignupPage
+    SignupPage,
+    SigninPage
   ],
   imports: [
     BrowserModule,
@@ -41,7 +43,8 @@ const FIREBASEAPPCONFIG = {
   entryComponents: [
     MyApp,
     HomePage,
-    SignupPage
+    SignupPage,
+    SigninPage
   ],
   providers: [
     AuthProvider,
