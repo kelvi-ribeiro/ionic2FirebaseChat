@@ -14,6 +14,7 @@ import { User } from '../../models/user.model';
 export class HomePage {
 
   users:FirebaseListObservable<User[]>
+  view:string = 'chats';
 
   constructor(
               public authProvider:AuthProvider,
