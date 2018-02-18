@@ -1,3 +1,4 @@
+import { AuthProvider } from './../../providers/auth/auth.provider';
 import { FirebaseListObservable } from 'angularfire2';
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
@@ -15,9 +16,13 @@ export class HomePage {
   users:FirebaseListObservable<User[]>
 
   constructor(
+              public authProvider:AuthProvider,
               public navCtrl: NavController,
               public userProvider:UserProvider) {
 
+  }
+  ionViewCanEnter():Promise<boolean>{
+    return this.authProvider.authenticated;
   }
   ionViewDidLoad(){
     this.users = this.userProvider.users

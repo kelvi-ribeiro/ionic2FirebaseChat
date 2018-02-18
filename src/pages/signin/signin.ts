@@ -1,3 +1,4 @@
+
 import { Component } from '@angular/core';
 import {AlertController,Loading, LoadingController,NavController, NavParams,  } from 'ionic-angular';
 import { FormGroup, FormBuilder,Validators } from '@angular/forms';
@@ -73,6 +74,19 @@ export class SigninPage {
       message: message,
       buttons: ['OK']
     }).present();
+  }
+  onHomePage():void{
+    this.navCtrl.push(HomePage)
+    .then((hasAcess:boolean)=>{
+      console.log('Autorizado',hasAcess);
+
+    }).catch(err=>{
+      console.log('Não autorizado ',err);
+
+    })
+  }
+  onLogout():void{
+    this.authProvider.logout();
   }
 
 }

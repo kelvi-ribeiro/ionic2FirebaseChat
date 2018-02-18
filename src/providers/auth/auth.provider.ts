@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth, FirebaseAuthState } from 'angularfire2';
 import { BaseProvider } from '../base/base.provider';
 
+import 'rxjs/add/operator/first'
+
 /*
   Generated class for the AuthProvider provider.
 
@@ -34,6 +36,16 @@ export class AuthProvider extends BaseProvider {
 
   logout():Promise<void>{
     return this.auth.logout();
+  }
+
+  get authenticated():Promise<boolean>{
+    return new Promise((resolve,reject)=>{
+      this.auth
+      .first()
+      .subscribe((authState:FirebaseAuthState)=>{
+        (authState)?resolve(true):reject(false)
+      });
+    });
   }
 
 }
