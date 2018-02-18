@@ -14,7 +14,8 @@ import { NavController, NavParams } from 'ionic-angular';
   templateUrl: 'chat.html',
 })
 export class ChatPage {
-  messages:string[] = []
+  messages:string[] = [];
+  newMessage:string;
 
 
   constructor(public authProvider:AuthProvider,
