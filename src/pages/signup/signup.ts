@@ -55,8 +55,9 @@ export class SignupPage {
             .then((authState: FirebaseAuthState) => {
 
               delete formUser.password;
-              formUser.uid = authState.auth.uid;
-              this.userProvider.createUser(formUser)
+              let uuid:string = authState.auth.uid;
+
+              this.userProvider.createUser(formUser,uuid)
                 .then(() => {
                   this.navCtrl.setRoot(HomePage)
                   loading.dismiss()

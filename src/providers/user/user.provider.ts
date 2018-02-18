@@ -19,8 +19,8 @@ export class UserProvider extends BaseProvider {
     this.users = this.af.database.list(`/users`)
   }
 
-  createUser(user:User):firebase.Promise<void>{
-    return this.af.database.object(`/users/${user.uid}`)
+  createUser(user:User,uuid:string):firebase.Promise<void>{
+    return this.af.database.object(`/users/${uuid}`)
     .set(user)
     .catch(this.handlePromiseError)
   }
