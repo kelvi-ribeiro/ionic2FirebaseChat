@@ -1,3 +1,4 @@
+import { ChatPage } from './../pages/chat/chat';
 import { CapitalizePipe } from './../pipes/capitalize.pipe';
 
 import { UserProvider } from './../providers/user/user.provider';
@@ -35,6 +36,7 @@ const FIREBASEAPPCONFIG = {
 @NgModule({
   declarations: [
     CapitalizePipe,
+    ChatPage,
     CustomLoggedHeaderComponent,
     HomePage,
     MyApp,
@@ -42,6 +44,7 @@ const FIREBASEAPPCONFIG = {
     SignupPage
   ],
   imports: [
+
     BrowserModule,
     HttpModule,
     IonicModule.forRoot(MyApp),
@@ -49,6 +52,7 @@ const FIREBASEAPPCONFIG = {
   ],
   bootstrap: [IonicApp],
   entryComponents: [
+    ChatPage,
     MyApp,
     HomePage,
     SignupPage,

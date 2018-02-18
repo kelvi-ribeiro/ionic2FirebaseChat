@@ -6,6 +6,7 @@ import { NavController } from 'ionic-angular';
 import { SignupPage } from './../signup/signup';
 import { UserProvider } from './../../providers/user/user.provider';
 import { User } from '../../models/user.model';
+import { ChatPage } from '../chat/chat';
 
 @Component({
   selector: 'page-home',
@@ -31,7 +32,9 @@ export class HomePage {
 
   }
   onChatCreate(user:User){
-    console.log('User',user);
+    this.navCtrl.push(ChatPage,{
+      recipenteUser:user
+    })
 
   }
   onSignup():void{
