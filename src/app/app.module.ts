@@ -1,3 +1,4 @@
+import { CapitalizePipe } from './../pipes/capitalize.pipe';
 
 import { UserProvider } from './../providers/user/user.provider';
 import { BrowserModule } from '@angular/platform-browser';
@@ -33,6 +34,7 @@ const FIREBASEAPPCONFIG = {
   }
 @NgModule({
   declarations: [
+    CapitalizePipe,
     CustomLoggedHeaderComponent,
     HomePage,
     MyApp,
