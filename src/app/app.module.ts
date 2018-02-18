@@ -14,6 +14,7 @@ import { HttpModule } from '@angular/http';
 import { AuthProvider } from '../providers/auth/auth.provider';
 import { BaseProvider } from '../providers/base/base.provider';
 import { SigninPage } from '../pages/signin/signin';
+import { CustomLoggedHeaderComponent } from '../components/custom-logged-header/custom-logged-header.component';
 
 
 
@@ -32,10 +33,11 @@ const FIREBASEAPPCONFIG = {
   }
 @NgModule({
   declarations: [
-    MyApp,
+    CustomLoggedHeaderComponent,
     HomePage,
-    SignupPage,
-    SigninPage
+    MyApp,
+    SigninPage,
+    SignupPage
   ],
   imports: [
     BrowserModule,

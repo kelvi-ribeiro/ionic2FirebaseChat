@@ -8,12 +8,13 @@ export abstract class BaseComponent implements OnInit{
   protected navCtrl:NavController;
   constructor(
     public alertCtrl:AlertController,
-    public AuthProvider:AuthProvider,
+    public authProvider:AuthProvider,
     public app:App,
     public menuCtrl:MenuController
   ){}
   ngOnInit():void{
     this.navCtrl = this.app.getActiveNav();
+    // this.navCtrl = this.app.getActiveNavs[0].push
   }
   onLogout():void{
     this.alertCtrl.create({
@@ -22,7 +23,7 @@ export abstract class BaseComponent implements OnInit{
         {
           text:'Yes',
           handler:()=>{
-            this.AuthProvider.logout()
+            this.authProvider.logout()
             .then(()=>{
               this.navCtrl.setRoot(SigninPage)
             })
