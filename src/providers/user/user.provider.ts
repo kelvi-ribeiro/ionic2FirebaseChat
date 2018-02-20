@@ -34,7 +34,7 @@ export class UserProvider extends BaseProvider {
     .subscribe((authState:FirebaseAuthState)=>{
       if(authState){
         this.currentUser = this.af.database.object(`/users/${authState.auth.uid}`);
-        this.setUsers(authState.auth.uid)
+        this.setUsers(authState.auth.uid);
 
       }
     })

@@ -1,6 +1,6 @@
 export class User{
   constructor(
-    public name:String,
+    public name:string,
     public username:string,
     public email:string,
     public photo:string,
