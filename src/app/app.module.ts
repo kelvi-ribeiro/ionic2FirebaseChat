@@ -1,3 +1,4 @@
+
 import { ChatPage } from './../pages/chat/chat';
 import { CapitalizePipe } from './../pipes/capitalize.pipe';
 
@@ -17,6 +18,8 @@ import { AuthProvider } from '../providers/auth/auth.provider';
 import { BaseProvider } from '../providers/base/base.provider';
 import { SigninPage } from '../pages/signin/signin';
 import { CustomLoggedHeaderComponent } from '../components/custom-logged-header/custom-logged-header.component';
+import { ChatProvider } from '../providers/chat/chat.provider';
+
 
 
 
@@ -59,12 +62,14 @@ const FIREBASEAPPCONFIG = {
     SigninPage
   ],
   providers: [
+    ChatProvider,
     AuthProvider,
     StatusBar,
     SplashScreen,
     UserProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     UserProvider,
+
 
   ]
 })
