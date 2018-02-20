@@ -17,15 +17,25 @@ export class UserProvider extends BaseProvider {
         )
          {
            super();
-    this.users = this.af.database.list(`/users`)
+
     this.listenAuthState();
   }
-
+  private setUsers(uidToExclude:string):void{
+    this.users = <FirebaseListObservable<User[]>>this.af.database.list(`/users`,{
+      query:{
+        orderByChild:'name'
+      }
+    }).map((users:User[])=>{
+      return users.filter((user:User)=>user.$key !== uidToExclude)
+    })
+  }
   private listenAuthState():void{
     this.af.auth
     .subscribe((authState:FirebaseAuthState)=>{
       if(authState){
         this.currentUser = this.af.database.object(`/users/${authState.auth.uid}`);
+        this.setUsers(authState.auth.uid)
+
       }
     })
   }
