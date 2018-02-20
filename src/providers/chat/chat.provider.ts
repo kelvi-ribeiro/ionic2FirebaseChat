@@ -1,4 +1,4 @@
-import { AngularFire } from 'angularfire2';
+import { AngularFire, FirebaseObjectObservable } from 'angularfire2';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BaseProvider } from '../base/base.provider';
@@ -21,7 +21,12 @@ export class ChatProvider extends BaseProvider {
   create(chat:Chat,userId1:string,userId2:string):firebase.Promise<void>{
     return this.af.database.object(`/chats/${userId1}/${userId2}`)
     .set(chat)
-    .catch(this.handlePromiseError)
+    .catch(this.handlePromiseError);
+  }
+
+  getDeepChat(userId1:string,userId2:string):FirebaseObjectObservable<Chat>{
+    return <FirebaseObjectObservable<Chat>>this.af.database.object(`/chats/${userId1}/${userId2}`)
+    .catch(this.handleObservableError)
   }
 
 }
