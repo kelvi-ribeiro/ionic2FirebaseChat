@@ -1,5 +1,5 @@
+import { HttpModule } from '@angular/http';
 import { AngularFire, FirebaseObjectObservable } from 'angularfire2';
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BaseProvider } from '../base/base.provider';
 import { Chat } from '../../models/chat.model';
@@ -14,7 +14,7 @@ import { Chat } from '../../models/chat.model';
 export class ChatProvider extends BaseProvider {
 
   constructor(public af:AngularFire,
-              public http: HttpClient) {
+              public http: HttpModule) {
               super();
   }
 
